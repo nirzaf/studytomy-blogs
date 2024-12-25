@@ -46,7 +46,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run docs:dev`        | Starts local dev server at `localhost:4321`      |
 | `npm run docs:build`      | Build your production site to `./dist/`          |
 | `npm run docs:preview`    | Preview your build locally, before deploying     |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
 ## 👀 Want to learn more?
 
