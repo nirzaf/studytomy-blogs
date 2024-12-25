@@ -42,10 +42,10 @@ All commands are run from the root of the project, from a terminal:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run docs:dev`        | Starts local dev server at `localhost:4321`      |
-| `npm run docs:build`      | Build your production site to `./dist/`          |
-| `npm run docs:preview`    | Preview your build locally, before deploying     |
+| `pnpm install`            | Installs dependencies                            |
+| `pnpm dev`                | Starts local dev server at `localhost:4321`      |
+| `pnpm run build`          | Build your production site to `./dist/`          |
+| `pnpm preview`            | Preview your build locally, before deploying     |
 
 ## 👀 Want to learn more?
 
