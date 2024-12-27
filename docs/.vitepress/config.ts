@@ -13,15 +13,38 @@ export default defineConfig({
       { text: 'Community', link: '/community/' }
     ],
 
-    sidebar: [
-      {
-        text: 'Guide',
-        items: [
-          { text: 'Getting Started', link: '/guide/getting-started' },
-          { text: 'Installation', link: '/guide/installation' }
-        ]
-      }
-    ],
+    sidebar: {
+      '/guide/': [
+        {
+          text: 'Guide',
+          items: [
+            { text: 'Introduction', link: '/guide/' },
+            { text: 'Getting Started', link: '/guide/getting-started' },
+            { text: 'Installation', link: '/guide/installation' }
+          ]
+        }
+      ],
+      '/docs/': [
+        {
+          text: 'Documentation',
+          items: [
+            { text: 'Overview', link: '/docs/' },
+            { text: 'API Reference', link: '/docs/api' },
+            { text: 'Configuration', link: '/docs/configuration' }
+          ]
+        }
+      ],
+      '/community/': [
+        {
+          text: 'Community',
+          items: [
+            { text: 'Overview', link: '/community/' },
+            { text: 'Contributing', link: '/community/contributing' },
+            { text: 'Code of Conduct', link: '/community/code-of-conduct' }
+          ]
+        }
+      ]
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/studytomy' }

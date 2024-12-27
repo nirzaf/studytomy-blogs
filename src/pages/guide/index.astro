@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const content = await import('../../../docs/guide/index.md');
+---
+
+<Layout title="Guide | StudyToMy">
+  <article class="prose prose-lg mx-auto px-4">
+    <content.Content />
+  </article>
+</Layout>
