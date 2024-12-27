@@ -1,0 +1,2 @@
+- use pnpm package manager always 
+- update the project-memory.md always 

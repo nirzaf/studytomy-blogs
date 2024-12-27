@@ -1,0 +1,3 @@
+Always update project-memory.md file based on changes made, 
+always keep this file updated to provide most relevant context 
+about this project
