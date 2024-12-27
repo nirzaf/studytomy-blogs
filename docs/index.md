@@ -10,7 +10,7 @@ hero:
       link: /guide/introduction
     - theme: alt
       text: View on GitHub
-      link: https://github.com/your-org/js-frameworks-docs
+      link: https://github.com/nirzaf
 
 features:
   - icon: 🚀

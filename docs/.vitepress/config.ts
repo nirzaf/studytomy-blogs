@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: "JavaScript Frameworks",
-  description: "A comprehensive guide to modern JavaScript frameworks",
+  title: "Studytomy Blogs",
+  description: "Knowledge sharing platform by Studymunity",
   themeConfig: {
     logo: '/logo.svg',
     nav: [
@@ -66,11 +66,62 @@ export default defineConfig({
       ]
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/your-org/js-frameworks-docs' }
+      { icon: 'github', link: 'https://github.com/nirzaf' }
     ],
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2024-present'
+    },
+    // Add custom theme colors
+    appearance: 'dark',
+    colors: {
+      primary: {
+        50: '#EAE2B7',
+        100: '#FCBF49',
+        500: '#F77F00',
+        600: '#D62828',
+        700: '#003049'
+      }
     }
-  }
+  },
+  // Add custom CSS
+  head: [
+    ['style', {}, `
+      :root {
+        --vp-c-bg: #003049;
+        --vp-c-text: #EAE2B7;
+        --vp-c-brand: #F77F00;
+        --vp-c-brand-light: #FCBF49;
+        --vp-c-brand-lighter: #EAE2B7;
+        --vp-c-brand-dark: #D62828;
+        --vp-c-brand-darker: #953137;
+        
+        --vp-c-sponsor: #FC8862;
+        
+        --vp-c-bg-alt: #2b2e44;
+        --vp-c-bg-soft: #2b2e44;
+        --vp-c-bg-mute: #a0949c;
+        
+        --vp-c-divider: #a1a4b0;
+        --vp-c-divider-light: #a1a4b0;
+        
+        --vp-c-text-1: #EAE2B7;
+        --vp-c-text-2: #a1a4b0;
+        --vp-c-text-3: #a0949c;
+        
+        --vp-button-brand-bg: #F77F00;
+        --vp-button-brand-hover-bg: #FCBF49;
+        --vp-button-brand-active-bg: #D62828;
+        
+        --vp-custom-block-info-bg: #2b2e44;
+        --vp-custom-block-info-border: #003049;
+        --vp-custom-block-tip-bg: #2b2e44;
+        --vp-custom-block-tip-border: #F77F00;
+        --vp-custom-block-warning-bg: #2b2e44;
+        --vp-custom-block-warning-border: #FCBF49;
+        --vp-custom-block-danger-bg: #2b2e44;
+        --vp-custom-block-danger-border: #D62828;
+      }
+    `]
+  ]
 })

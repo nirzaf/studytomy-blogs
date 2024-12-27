@@ -4,10 +4,11 @@ interface Props {
 }
 
 const { title } = Astro.props;
+import Navigation from '../components/Navigation.astro';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-white">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -16,35 +17,75 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<slot />
+	<body class="min-h-screen">
+		<Navigation />
+		<main class="pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+			<slot />
+		</main>
 	</body>
 </html>
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		/* Primary Colors */
+		--prussian-blue: #003049;
+		--cinnabar: #D62828;
+		--orange-peel: #F77F00;
+		--maize: #FCBF49;
+		--bone: #EAE2B7;
+		
+		/* Secondary Colors */
+		--burnt-sienna: #e56b49;
+		--dark-slate: #2b2e44;
+		--deep-red: #953137;
+		--gray-blue: #a1a4b0;
+		--taupe-gray: #a0949c;
+		
+		/* Accent Colors */
+		--coral: #FC8862;
+		--light-coral: #FC7174;
+
+		/* Theme Colors */
+		--text-primary: var(--prussian-blue);
+		--text-secondary: var(--dark-slate);
+		--accent-primary: var(--orange-peel);
+		--accent-secondary: var(--burnt-sienna);
+		--background: #ffffff;
+		--border-color: var(--gray-blue);
 	}
+
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
+		background: var(--background);
+		margin: 0;
+		padding: 0;
+		color: var(--text-primary);
 	}
+
+	body {
+		margin: 0;
+		padding: 0;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		color: var(--text-primary);
+	}
+
+	a {
+		color: var(--accent-primary);
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+
+	a:hover {
+		color: var(--accent-secondary);
+	}
+
 	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+		background: var(--bone);
+		color: var(--prussian-blue);
+		padding: 0.2em 0.4em;
+		border-radius: 3px;
 	}
 </style>
