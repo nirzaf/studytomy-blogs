@@ -22,7 +22,25 @@ export default {
         'coral': '#FC8862',
         'light-coral': '#FC7174',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': '#2b2e44',
+            '--tw-prose-headings': '#003049',
+            '--tw-prose-links': '#F77F00',
+            '--tw-prose-bold': '#2b2e44',
+            '--tw-prose-code': '#003049',
+            '--tw-prose-pre-code': '#ffffff',
+            '--tw-prose-pre-bg': '#2b2e44',
+            '--tw-prose-quotes': '#a1a4b0',
+            '--tw-prose-quote-borders': '#F77F00',
+            maxWidth: '100ch',
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
