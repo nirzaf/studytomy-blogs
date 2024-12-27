@@ -5,13 +5,10 @@ import { useTheme } from 'next-themes'
 import { useState, useEffect } from 'react'
 import { Sun, Moon } from 'lucide-react'
 import Search from './Search'
+import { PostData } from '@/lib/markdown'
 
 interface HeaderProps {
-  posts: Array<{
-    id: string
-    title: string
-    content: string
-  }>
+  posts: PostData[]
 }
 
 const Header = ({ posts }: HeaderProps) => {
@@ -50,4 +47,3 @@ const Header = ({ posts }: HeaderProps) => {
 }
 
 export default Header
-

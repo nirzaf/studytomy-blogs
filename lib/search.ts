@@ -1,16 +1,28 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { PostData } from './markdown'
 
 let elasticlunr: any
 let index: any
 
-export async function createSearchIndex(posts: any[]) {
+interface SearchResult {
+  ref: string;
+  score: number;
+  doc: PostData;
+}
+
+interface ElasticLunrThis {
+  addField: (field: string) => void;
+  setRef: (field: string) => void;
+}
+
+export async function createSearchIndex(posts: PostData[]) {
   if (!elasticlunr) {
     elasticlunr = (await import('elasticlunr')).default
   }
 
-  index = elasticlunr(function () {
+  index = elasticlunr(function(this: ElasticLunrThis) {
     this.addField('title')
     this.addField('content')
     this.setRef('id')
@@ -20,12 +32,12 @@ export async function createSearchIndex(posts: any[]) {
     index.addDoc({
       id: post.id,
       title: post.title,
-      content: post.content,
+      content: post.content || '',
     })
   })
 }
 
-export function searchPosts(query: string) {
+export function searchPosts(query: string): SearchResult[] {
   if (!index) {
     throw new Error('Search index not initialized')
   }
@@ -39,9 +51,9 @@ export function searchPosts(query: string) {
   })
 }
 
-export function useSearch(posts: any[]) {
+export function useSearch(posts: PostData[]) {
   const [query, setQuery] = useState('')
-  const [results, setResults] = useState<any[]>([])
+  const [results, setResults] = useState<SearchResult[]>([])
 
   useEffect(() => {
     createSearchIndex(posts)
@@ -63,4 +75,3 @@ export function useSearch(posts: any[]) {
 
   return { query, setQuery, results }
 }
-

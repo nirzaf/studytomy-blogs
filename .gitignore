@@ -1,5 +1,6 @@
 node_modules
-.next/*
+.next
+
 .next/app-build-manifest.json
 .next/build-manifest.json
 .next/react-loadable-manifest.json

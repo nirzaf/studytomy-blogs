@@ -3,18 +3,50 @@ import { calculateReadingTime } from '@/lib/readingTime'
 import { notFound } from 'next/navigation'
 import ReadingProgress from '@/components/ReadingProgress'
 import SocialShare from '@/components/SocialShare'
+import { Metadata } from 'next'
 
-export async function generateStaticParams() {
+interface PostParams {
+  id: string;
+}
+
+interface PostSearchParams {
+  [key: string]: string | string[] | undefined;
+}
+
+export async function generateMetadata(
+  { params, searchParams }: { params: PostParams; searchParams: PostSearchParams }
+): Promise<Metadata> {
+  const post = await getPostData(params.id)
+  
+  if (!post) {
+    return {
+      title: 'Post Not Found'
+    }
+  }
+
+  return {
+    title: post.title,
+    description: post.description || `Read ${post.title} on our blog`
+  }
+}
+
+export async function generateStaticParams(): Promise<PostParams[]> {
   const posts = getSortedPostsData()
   return posts.map((post) => ({
     id: post.id,
   }))
 }
 
-export default async function Post({ params }: { params: { id: string } }) {
+export default async function Post({
+  params,
+  searchParams,
+}: {
+  params: PostParams;
+  searchParams: PostSearchParams;
+}) {
   const postData = await getPostData(params.id)
 
-  if (!postData) {
+  if (!postData || !postData.contentHtml) {
     notFound()
   }
 
@@ -37,4 +69,3 @@ export default async function Post({ params }: { params: { id: string } }) {
     </>
   )
 }
-

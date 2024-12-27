@@ -2,7 +2,7 @@
 
 ## Project Context
 - Project Name: next-js-advanced-blog
-- Current Next.js Version: 15.1.3 (upgraded from 13.4.12)
+- Current Next.js Version: 13.5.6 (downgraded from 15.1.3)
 - Package Manager: pnpm
 - Main Dependencies:
   - React: 19.0.0
@@ -74,7 +74,7 @@
 - Search functionality with elasticlunr
 
 ## Technical Stack
-- Framework: Next.js 15
+- Framework: Next.js 13
 - Styling: TailwindCSS
 - Content: Markdown with various plugins
 - Language: TypeScript
@@ -85,6 +85,61 @@
 - Implement React 19 concurrent features where beneficial
 - Utilize new Next.js 15 caching strategies
 - Take advantage of improved image optimization
+
+## Recent Changes
+### 2024-12-28
+1. Added missing globals.css:
+   - Created app/globals.css with TailwindCSS imports
+   - Added base styles for light/dark mode
+   - Configured gradient background
+   - Set up responsive color schemes
+
+2. Added KaTeX Dependencies:
+   - Installed rehype-katex@7.0.1
+   - Added katex for math rendering support
+   - Configured markdown processing pipeline
+
+3. Fixed TypeScript Issues:
+   - Created explicit PostParams and PostSearchParams interfaces
+   - Added proper type annotations for all page exports
+   - Improved type safety with Promise return types
+   - Enhanced params and searchParams typing
+
+4. Fixed Theme Hydration:
+   - Added mounted state to ThemeProvider
+   - Prevented hydration mismatch with SSR
+   - Improved client-side theme initialization
+   - Enhanced dark mode switching reliability
+
+5. Framework Version Management:
+   - Downgraded Next.js from 15.1.3 to 13.5.6 for better type compatibility
+   - Resolved TypeScript compilation issues
+   - Maintained app router functionality
+   - Improved build stability
+
+6. Enhanced Markdown Processing:
+   - Added PostData interface for better type safety
+   - Included optional description field in post metadata
+   - Improved error handling in getPostData
+   - Optimized remark plugin order
+
+7. Git Configuration:
+   - Added detailed .next directory exclusions
+   - Specified individual build artifacts to ignore
+   - Added webpack cache directories
+   - Ensured comprehensive build output exclusion
+
+8. Improved Error Handling:
+   - Added null check for contentHtml in post pages
+   - Enhanced 404 handling for missing content
+   - Strengthened type safety in content rendering
+   - Improved user experience for missing data
+
+9. Type System Improvements:
+   - Exported PostData interface from markdown module
+   - Added ElasticLunrThis interface for search
+   - Fixed this type annotations in elasticlunr
+   - Enhanced search result type safety
 
 ## Next Steps
 1. Test all routes and components for breaking changes

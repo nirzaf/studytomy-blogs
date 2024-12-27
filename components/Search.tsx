@@ -2,13 +2,10 @@
 
 import Link from 'next/link'
 import { useSearch } from '@/lib/search'
+import { PostData } from '@/lib/markdown'
 
 interface SearchProps {
-  posts: Array<{
-    id: string
-    title: string
-    content: string
-  }>
+  posts: PostData[]
 }
 
 export default function Search({ posts }: SearchProps) {
@@ -37,4 +34,3 @@ export default function Search({ posts }: SearchProps) {
     </div>
   )
 }
-

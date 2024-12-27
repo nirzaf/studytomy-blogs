@@ -9,7 +9,16 @@ import katex from 'rehype-katex'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
-export function getSortedPostsData() {
+export interface PostData {
+  id: string;
+  content?: string;
+  date: string;
+  title: string;
+  description?: string;
+  contentHtml?: string;
+}
+
+export function getSortedPostsData(): PostData[] {
   // Check if the directory exists
   if (!fs.existsSync(postsDirectory)) {
     console.warn("Posts directory does not exist. Returning empty array.");
@@ -26,7 +35,7 @@ export function getSortedPostsData() {
     return {
       id,
       content: matterResult.content,
-      ...(matterResult.data as { date: string; title: string }),
+      ...(matterResult.data as { date: string; title: string; description?: string }),
     }
   })
 
@@ -39,21 +48,21 @@ export function getSortedPostsData() {
   })
 }
 
-export async function getPostData(id: string) {
+export async function getPostData(id: string): Promise<PostData | null> {
   const fullPath = path.join(postsDirectory, `${id}.md`)
   
   // Check if the file exists
   if (!fs.existsSync(fullPath)) {
-    throw new Error(`Post not found: ${id}`);
+    return null;
   }
 
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const matterResult = matter(fileContents)
 
   const processedContent = await remark()
+    .use(math)
     .use(html)
     .use(highlight)
-    .use(math)
     .use(katex)
     .process(matterResult.content)
   const contentHtml = processedContent.toString()
@@ -61,7 +70,6 @@ export async function getPostData(id: string) {
   return {
     id,
     contentHtml,
-    ...(matterResult.data as { date: string; title: string }),
+    ...(matterResult.data as { date: string; title: string; description?: string }),
   }
 }
-
