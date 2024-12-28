@@ -5,16 +5,8 @@ import ReadingProgress from '@/components/ReadingProgress'
 import SocialShare from '@/components/SocialShare'
 import { Metadata } from 'next'
 
-interface PostParams {
-  id: string;
-}
-
-interface PostSearchParams {
-  [key: string]: string | string[] | undefined;
-}
-
 export async function generateMetadata(
-  { params, searchParams }: { params: PostParams; searchParams: PostSearchParams }
+  { params }: { params: { id: string } }
 ): Promise<Metadata> {
   const post = await getPostData(params.id)
   
@@ -30,19 +22,17 @@ export async function generateMetadata(
   }
 }
 
-export async function generateStaticParams(): Promise<PostParams[]> {
+export async function generateStaticParams() {
   const posts = getSortedPostsData()
   return posts.map((post) => ({
     id: post.id,
   }))
 }
 
-export default async function Post({
+export default async function Page({
   params,
-  searchParams,
 }: {
-  params: PostParams;
-  searchParams: PostSearchParams;
+  params: { id: string }
 }) {
   const postData = await getPostData(params.id)
 
@@ -50,7 +40,7 @@ export default async function Post({
     notFound()
   }
 
-  const readingTime = calculateReadingTime(postData.contentHtml)
+  const readingTime = calculateReadingTime(postData.contentHtml || '')
   const postUrl = `https://yourblog.com/posts/${params.id}`
 
   return (
