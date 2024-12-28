@@ -17,11 +17,7 @@
     "gray-matter": "^4.0.3",
     "katex": "^0.16.18",
     "lucide-react": "^0.469.0",
-<<<<<<< HEAD
-    "next": "14.0.4",
-=======
     "next": "14.2.15",
->>>>>>> 4fcbf600cb9c61261118d1e9d7e9b6f2c1f4ffaa
     "next-seo": "^6.6.0",
     "next-themes": "^0.4.4",
     "postcss": "8.4.49",
