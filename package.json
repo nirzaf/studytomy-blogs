@@ -15,7 +15,7 @@
     "autoprefixer": "10.4.20",
     "elasticlunr": "^0.9.5",
     "gray-matter": "^4.0.3",
-    "katex": "^0.16.18",
+    "katex": "^0.16.21",
     "lucide-react": "^0.469.0",
     "next": "14.2.15",
     "next-seo": "^6.6.0",
